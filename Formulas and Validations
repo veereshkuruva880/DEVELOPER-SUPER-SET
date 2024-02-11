@@ -1,0 +1,38 @@
+1 . Use Formula Fields
+----------------------
+
+Object Manager -> Contract -> Fields & Realationship
+Data Type           : Formula
+Field Label         : Days Remaining
+Field Name          : Days_Remaining
+Formula Return Type : Number
+****************************
+EndDate  -  TODAY() 
+****************************
+Next -> Next -> Save
+
+
+
+2 . Implement Roll-Up Summary Fields
+-------------------------------------
+
+Object Manager -> Account -> Fields & Realationship
+Data Type           : Roll up Summary
+Field Label         : Potential Value
+Field Label         : Potential_Value
+Click "Next"
+Summarized Object   : Opportunities
+Select Roll-Up Type : SUM  -> Expected Revenue
+Next -> Next -> Save
+
+
+3 . Create Validation Rules
+-----------------------------
+
+Object Manager -> Contact -> Validation Rules -> NEW
+Rule Name                 : Contact_must_be_in_Account_ZIP_Code
+Error Condition Formula   : AND(NOT(ISBLANK( AccountId )), MailingPostalCode <>  Account.ShippingPostalCode )
+Error Message             : no errors
+
+
+@tesla
